@@ -1,0 +1,15 @@
+coverage/
+*~
+*.o
+tmp*
+9cc
+*.gcda
+*.gcno
+*.exe
+*.out
+googletest-release-*/
+gtest/
+*.ut
+*.ppm
+*.gif
+
