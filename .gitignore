@@ -1,5 +1,8 @@
 coverage/
+*~
 *.o
+tmp*
+9cc
 *.gcda
 *.gcno
 *.exe
@@ -9,3 +12,4 @@ gtest/
 *.ut
 *.ppm
 *.gif
+
