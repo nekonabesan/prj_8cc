@@ -18,14 +18,14 @@ bool consume(char op){
 
 void expect(char op){
   if (token->kind != TK_RESERVED || token->str[0] != op){
-    error("'%c' is not charactor", op);
+    error_at(token->str, "expected '%c'", op);
   }
   token = token->next;
 }
 
 int expect_number(){
   if(token->kind != TK_NUM){
-    error("Not number");
+    error_at(token->str, "expected a number");
   }
   int val = token->val;
   token = token->next;
@@ -46,7 +46,8 @@ Token *new_token(TokenKind kind, Token *cur, char *str){
 }
 
 // 入力文字列pをトークナイズしてそれを返す
-Token *tokenize(char *p){
+Token *tokenize(){
+  char *p = user_input;
   Token head;
   head.next = NULL;
   Token *cur = &head;
@@ -69,7 +70,7 @@ Token *tokenize(char *p){
       // /printf("%s\n", cur->str);
       continue;
     }
-    error("Can not tokennize");
+    error_at(p, "expected a number");
   }
 
   new_token(TK_EOF, cur, p);

@@ -21,10 +21,12 @@ struct Token{
 };
 
 Token *token;
+char *user_input;
 
 void error(char *fmt, ...);
+void error_at(char *loc, char *fmt, ...);
 bool consume(char op);
 int expect_number();
 bool at_eof();
 Token *new_token(TokenKind kind, Token *cur, char *str);
-Token *tokenize(char *p);
+Token *tokenize();

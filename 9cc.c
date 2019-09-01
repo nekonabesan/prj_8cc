@@ -1,4 +1,5 @@
 #include "header.c"
+#include "modules/9cc_error_module.c"
 #include "modules/9cc_module.c"
 
 
@@ -8,7 +9,9 @@ int main(int argc, char **argv){
     return 1;
   }
 
-  token = tokenize(argv[1]);
+
+  user_input = argv[1];
+  token = tokenize();
 
   printf(".intel_syntax noprefix\n");
   printf(".global main\n");
