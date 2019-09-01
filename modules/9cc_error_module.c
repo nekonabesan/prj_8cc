@@ -1,3 +1,4 @@
+#include "../header.c"
 void error_at(char *loc, char *fmt, ...){
     va_list ap;
     va_start(ap, fmt);

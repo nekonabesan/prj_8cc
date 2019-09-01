@@ -1,4 +1,4 @@
-//#include "../header.c"
+#include "../header.c"
 //
 void error(char *fmt, ...){
   va_list ap;
@@ -75,4 +75,19 @@ Token *tokenize(){
 
   new_token(TK_EOF, cur, p);
   return head.next;
+}
+
+Node *new_node(Node kind, Node *lhs, Node *rhs){
+  Node *node = calloc(1, sizeof(Node));
+  node->kind = ND_NUM;
+  node->lhs = lhs;
+  node->rhs = rhs;
+  return node;
+}
+
+Node *new_node_num(int val){
+  Node *node = calloc(1, sizeof(Node));
+  node->kind = ND_NUM;
+  node->val = val;
+  return node;
 }
