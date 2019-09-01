@@ -14,6 +14,8 @@ typedef enum {
   TK_EOF,
 } TokenKind;
 
+typedef struct Token Token;
+
 typedef enum {
   ND_ADD, // +
   ND_SUB, // -
@@ -22,7 +24,6 @@ typedef enum {
   ND_NUM, // whole number
 } NodeKind;
 
-typedef struct Token Token;
 typedef struct Node Node;
 
 struct Token{
@@ -51,7 +52,10 @@ int expect_number();
 bool at_eof();
 Token *new_token(TokenKind kind, Token *cur, char *str);
 Token *tokenize();
-Node *new_node(Node kind, Node *lhs, Node *rhs);
+Node *new_node(NodeKind kind, Node *lhs, Node *rhs);
 Node *new_node_num(int val);
+Node *expr();
+Node *mul();
+Node *primary();
 
 #endif /* _TARGET_H_ */
