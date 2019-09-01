@@ -3,7 +3,9 @@
 // テスト対象関数を呼び出せるようにするのだが
 // extern "C"がないとCと解釈されない、意外とハマりがち。
 extern "C" {
-  #include "../8cc_main_target.h"
+  #include "../../header.c"
+  #include "../../modules/9cc_error_module.c"
+  //#include "../8cc_main_target.h"
 }
 
 // fixtureNameはテストケース群をまとめるグループ名と考えればよい、任意の文字列
@@ -26,37 +28,6 @@ protected:
   //int *roomprice = (int *)malloc(rmax * sizeof(int));
   //int *roomsel = (int *)malloc(rmax * sizeof(int));
 }*/
-
-
-//============================================================================//
-// b. quick error 01
-//============================================================================//
-TEST_F(fixtureName, error)
-{
-  // 値を読み出す時には room1 という下請け関数を呼びます。
-  // この関数は、人数 i が負のときは 0 を返し、それ以外はroomprice[i] を返します。
-  /*int n = 8;
-  int *a = (int *)malloc(n * sizeof(int));
-  int left = 0;
-  a[0] = 55;
-  a[1] = 13;
-  a[2] = 3;
-  a[3] = 45;
-  a[4] = 74;
-  a[5] = 87;
-  a[6] = 46;
-  a[7] = 30;
-  msort(a, left, n);
-  EXPECT_EQ(a[0], 3);
-  EXPECT_EQ(a[1], 13);
-  EXPECT_EQ(a[2], 30);
-  EXPECT_EQ(a[3], 45);
-  EXPECT_EQ(a[4], 46);
-  EXPECT_EQ(a[5], 55);
-  EXPECT_EQ(a[6], 74);
-  EXPECT_EQ(a[7], 87);
-  free(a);*/
-}
 
 //============================================================================//
 // c. quick consume 01
@@ -112,8 +83,9 @@ TEST_F(fixtureName, tokenize)
   p[11] = '5';
   p[12] = ' ';
   p[13] = '\0';
+  user_input = p;
   // case 01
-  hd = tokenize(p);
+  hd = tokenize();
   EXPECT_EQ(hd->val, 12);
   EXPECT_EQ(hd->kind, TK_NUM);
   ASSERT_STREQ(hd->str, "12 + 34 - 5 ");
