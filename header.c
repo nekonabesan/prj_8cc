@@ -52,10 +52,13 @@ int expect_number();
 bool at_eof();
 Token *new_token(TokenKind kind, Token *cur, char *str);
 Token *tokenize();
-Node *new_node(NodeKind kind, Node *lhs, Node *rhs);
+Node *new_node(NodeKind kind);
+Node *new_binary(NodeKind kind, Node *lhs, Node *rhs);
+Node *new_num(int val);
 Node *new_node_num(int val);
 Node *expr();
 Node *mul();
 Node *primary();
+void gen(Node *node);
 
 #endif /* _TARGET_H_ */
