@@ -60,5 +60,6 @@ Node *expr();
 Node *mul();
 Node *primary();
 void gen(Node *node);
+Node *unary();
 
 #endif /* _TARGET_H_ */
