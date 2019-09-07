@@ -73,10 +73,17 @@ bool at_eof();
 Token *new_token(TokenKind kind, Token *cur, char *str, int len);
 bool startswith(char *p, char *q);
 Token *tokenize();
+
+//
+// parse.c
+//
+Node *code[100];
 Node *new_node(NodeKind kind);
 Node *new_binary(NodeKind kind, Node *lhs, Node *rhs);
 Node *new_num(int val);
 Node *expr();
+Node *stmt();
+void program();
 Node *equality();
 Node *relational();
 Node *add();
