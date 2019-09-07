@@ -84,4 +84,10 @@ Node *primary();
 void gen(Node *node);
 Node *unary();
 
+//
+// codegen.c
+//
+
+void codegen(Node *node);
+
 #endif /* _TARGET_H_ */

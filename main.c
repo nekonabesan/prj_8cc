@@ -1,6 +1,4 @@
-#include "header.c"
-#include "modules/9cc_module.c"
-
+#include "9cc.h"
 
 int main(int argc, char **argv){
   if(argc != 2){
@@ -13,14 +11,7 @@ int main(int argc, char **argv){
   Node *node = expr();
 
   // Print out the first half of assembly
-  printf(".intel_syntax noprefix\n");
-  printf(".global main\n");
-  printf("main:\n");
+  codegen(node);
 
-  // Traver the AST to emmit assembly
-  gen(node);
-
-  printf("  pop rax\n");
-  printf("  ret\n");
   return 0;
 }
