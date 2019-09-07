@@ -1,11 +1,12 @@
-CFLANGS=std=c11 -g static
+CFLANGS=std=c11 -g -static
 
-9cc: 9cc.c
+chibicc: main.o
+	$(CC) -o $@ $? $(LDFLAGS)
 
-test: 9cc
+test: chibicc
 	./test/test.sh
 
 clean:
-	rm -f 9cc *.o *~ tmp*
+	rm -f chibicc *.o *~ tmp*
 
 .PHONY: test clean
