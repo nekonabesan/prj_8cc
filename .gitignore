@@ -3,6 +3,7 @@ coverage/
 *.o
 tmp*
 9cc
+chibicc
 *.gcda
 *.gcno
 *.exe
@@ -12,4 +13,3 @@ gtest/
 *.ut
 *.ppm
 *.gif
-

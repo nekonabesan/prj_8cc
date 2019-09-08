@@ -42,6 +42,9 @@ void expect(char *op){
 
 int expect_number(){
   if(token->kind != TK_NUM){
+    printf("token->val : %d\n", token->val);
+    printf("token->kind : %d\n", token->kind);
+    printf("token->str : %s\n", token->str);
     error_at(token->str, "expected a number");
   }
   int val = token->val;
@@ -92,7 +95,7 @@ Token *tokenize(){
     }
 
     // Integer literal
-    if (isdigit(*p)) {
+    if(isdigit(*p)){
       cur = new_token(TK_NUM, cur, p, 0);
       char *q = p;
       cur->val = strtol(p, &p, 10);
@@ -212,7 +215,7 @@ Node *unary() {
 
 // primary = "(" expr ")" | num
 Node *primary() {
-  if (consume("(")) {
+  if(consume("(")) {
     Node *node = expr();
     expect(")");
     return node;
@@ -252,7 +255,7 @@ void gen(Node *node){
       printf("  idiv rdi\n");
       break;
     case ND_EQ:
-      printf("  cmp rax, rdi\n");
+      printf("  cmp rdx, rdi\n");
       printf("  sete al\n");
       printf("  movzb rax, al\n");
       break;
